@@ -104,7 +104,8 @@ exports.author_delete_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.author_update_get = asyncHandler(async (req, res, next) => {
-    res.send("NOT IMPLEMENTED: Author update GET");
+    const author = await(Author.findById(req.params.id).exec());
+    res.render("author_form", {author: author})
 });
 
 exports.author_update_post = asyncHandler(async (req, res, next) => {
